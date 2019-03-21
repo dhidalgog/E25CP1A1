@@ -1,7 +1,27 @@
+<div class="modal" id="modalqlo" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editing Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', post: @post %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-3">
     <h1>New Post</h1>
-    <%= form_with model: @post do |form| %>
+    <%= form_with model: @post, multipart: true do |form| %>
       <% if @post.errors.any? %>
         <div id="error_explanation">
          <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -16,6 +36,11 @@
       <div class="field">
         <%= form.label :title %>
         <%= form.text_field :title %>
+      </div>
+
+      <div class="field">
+        <%= form.label :photo %>
+        <%= form.file_field :photo %>
       </div>
 
       <div class="actions">
@@ -47,6 +72,8 @@
     </table>
   </div>
 </div>
+
+
 
 <script>
   $("[name=search]").keyup(function (e) { 

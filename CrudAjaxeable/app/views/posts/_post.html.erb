@@ -1,7 +1,8 @@
 <tr id="post-<%= post.id %>">
   <td><%= post.title %></td>
+  <td><%= image_tag post.photo.to_s, height:100 %></td>
   <td><%= link_to 'Show', post %></td>
-  <td><%= link_to 'Edit', edit_post_path(post) %></td>
+  <td><%= link_to 'Edit', posts_path, { 'data-toggle' => 'modal', 'data-target' => '#modalqlo'} %></td>
   <td><%= link_to 'Destroy', post, 
                             method: :delete, 
                             data: { confirm: 'Are you sure?' },
