@@ -5,7 +5,13 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @post = Post.new
-    @posts = Post.all
+    if params[:search].present?
+      @posts = Post.where('title like ?', "%#{params[:search]}%")
+    else
+      @posts = Post.all
+    end
+
+    
   end
 
   # GET /posts/1
